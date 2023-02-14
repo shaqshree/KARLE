@@ -173,17 +173,61 @@ public class MainActivity extends AppCompatActivity {
                     temperatureTV.setText(temperature+"°C");
                     int isDay = response.getJSONObject("current").getInt("is_day");
 
-                    String condition=response.getJSONObject("current").optJSONObject("condition").getString("text");
-                    String conditionIcon=response.getJSONObject("current").optJSONObject("condition").getString("icon");
+                    String condition=response.getJSONObject("current").getJSONObject("condition").getString("text");
+                    String conditionIcon=response.getJSONObject("current").getJSONObject("condition").getString("icon");
 
                     Picasso.get().load("http:".concat(conditionIcon)).into(iconIV);
                     conditionTV.setText(condition);
-                    if(isDay==1){
-                        Picasso.get().load("https://i.pinimg.com/736x/f6/5b/9f/f65b9f99f8518bd59a4c6849c39b4f0c.jpg").into(backIV);
-                    }else{
+                    if(condition.equals("Sunny")||condition.equals("Clear")){
+                        Picasso.get().load("https://th.bing.com/th/id/R.4d39757849deb4988cdf01f690c0034d?rik=XB%2ft14D04StB3Q&riu=http%3a%2f%2fwww.superiorwallpapers.com%2fdownload%2fsunny-day-on-the-beach-hd-720x1280.jpg&ehk=1%2b1XWOXCwGtsChl1hOcATvrpX13tuL9KFUzkfvUcG3Q%3d&risl=&pid=ImgRaw&r=0").into(backIV);
+                    }else if(condition.equals("Partly cloudy")){
                         Picasso.get().load("https://th.bing.com/th/id/R.9881c0025b58aa9d367bbd4bc7911a05?rik=71KqlQ0hDwfQ%2bw&riu=http%3a%2f%2fwww.pixelstalk.net%2fwp-content%2fuploads%2f2016%2f06%2fDownlaod-HD-Space-iPhone-Wallpapers.jpg&ehk=zatcaCuYgSHeS3A4seWAS3fQWESJ4Brs3XLpYRcY0uk%3d&risl=&pid=ImgRaw&r=0").into(backIV);
-                    }
+                    }else if (condition.equals("Cloudy")||condition.equals("Overcast")){
+                        Picasso.get().load("https://images.wallpapersden.com/image/download/cloudy-overcast-sunset_a2dmbWaUmZqaraWkpJRrZWVlrWllZWU.jpg").into(backIV);
 
+                    }else if(condition.equals("Mist")){
+                        Picasso.get().load("https://th.bing.com/th/id/OIP.yyknQN-LYse4133parR0CAHaLG?pid=ImgDet&w=1280&h=1918&rs=1").into(backIV);
+
+                    }else if(condition.equals("Ice pellets")){
+                        Picasso.get().load("https://i.cbc.ca/1.4551197.1519572689!/fileImage/httpImage/image.jpg_gen/derivatives/16x9_780/ice-pellets-snow-halifax.jpg").into(backIV);
+
+                    }else if(condition.equals("Moderate rain at times")||condition.equals("Moderate rain")||condition.equals("Heavy rain at times")||condition.equals("Heavy rain")||condition.equals("Moderate or heavy rain shower")||condition.equals("Torrential rain shower")){
+                        Picasso.get().load("https://wallpapercave.com/wp/tzOrQ4W.jpg").into(backIV);
+
+                    }else if(condition.equals("Patchy snow possible")||condition.equals("Patchy light snow")||condition.equals("Light snow")){
+                        Picasso.get().load("https://cdn.abcotvs.com/dip/images/5746938_121119-wpvi-light-snow-across-region-noon-video-vid.jpg?w=1600").into(backIV);
+
+                    }else if(condition.equals("Moderate snow")||condition.equals("Patchy heavy snow")||condition.equals("Heavy snow")){
+                        Picasso.get().load("https://th.bing.com/th/id/OIP.E4Xr9Bu_53hZ6Rr002LDJQHaEo?pid=ImgDet&rs=1").into(backIV);
+
+                    }else if(condition.equals("Patchy sleet possible")||condition.equals("Light sleet")||condition.equals("Light sleet showers")){
+                        Picasso.get().load("https://th.bing.com/th/id/R.3ccdf490549d36d1426f303e9f72bc67?rik=9rXgDWKXLcDmGQ&riu=http%3a%2f%2fwww.abccolumbia.com%2fwp-content%2fuploads%2f2016%2f01%2fImage4.jpg&ehk=MuDE%2fG3j1qnoEj8tWAKUMm2rBPRPU5UQ4%2bjhStTwc1A%3d&risl=&pid=ImgRaw&r=0").into(backIV);
+
+                    }else if(condition.equals("Moderate or heavy sleet")){
+                        Picasso.get().load("https://i.ytimg.com/vi/Livg9_3xVKo/maxresdefault.jpg").into(backIV);
+
+                    }else if(condition.equals("Thundery outbreaks possible")){
+                        Picasso.get().load("https://4.bp.blogspot.com/-7u65ZgmfHt8/V6cf5I8G_ZI/AAAAAAAAMVI/5_RYaNKXROIAcoKHvIjLghwU42he3VSGACPcB/s1600/rsz_lightning.jpg").into(backIV);
+
+                    }else if(condition.equals("Blowing snow")){
+                        Picasso.get().load("https://i1.wp.com/wslmradio.com/wp-content/uploads/2016/02/Blowing-Snow-Web.jpg?fit=1000%2C671").into(backIV);
+                    }else if(condition.equals("Blizzard")) {
+                        Picasso.get().load("https://fthmb.tqn.com/2dOO_ohJ5J9xORTH1AEILzmVQgc=/2048x1366/filters:fill(auto,1)/winter-blizzard-566f38203df78ce161a7e6f0.jpg").into(backIV);
+
+                    }else if(condition.equals("Moderate or heavy sleet showers")) {
+                        Picasso.get().load("https://i2-prod.dailypost.co.uk/incoming/article14282246.ece/ALTERNATES/s615b/Rhuallt.jpg").into(backIV);
+
+                    } else if(condition.equals("Fog")||condition.equals("Freezing fog")) {
+                        Picasso.get().load("https://th.bing.com/th/id/R.8cdf313886f2ac7aee7bdc1ccfaf4b7d?rik=FBds5UMPGH0MFA&riu=http%3a%2f%2fupload.wikimedia.org%2fwikipedia%2fcommons%2f1%2f11%2fDecember_Fog_01.jpg&ehk=syUETz1PAxoUh9EJkir1EefSE83BOfajAS0gjQef8F4%3d&risl=&pid=ImgRaw&r=0").into(backIV);
+
+                    }else if(condition.equals("Patchy freezing drizzle possible")||condition.equals("Freezing drizzle") ||condition.equals("Heavy freezing drizzle") ){
+                        Picasso.get().load("https://th.bing.com/th/id/OIP.wCeMiTqL9HshbiDv0LrpmQHaE7?pid=ImgDet&rs=1").into(backIV);
+
+                    }
+                    else {
+                        Picasso.get().load("https://live.staticflickr.com/2726/4376881062_60e420542a_b.jpg").into(backIV);
+
+                    }
 
 
                     JSONObject forecastObj = response.getJSONObject("forecast");
